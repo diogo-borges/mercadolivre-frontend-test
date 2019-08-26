@@ -1,0 +1,21 @@
+@import '../../assets/theme/colors.scss';
+
+.Categories{
+    min-height: 20px;
+    font-size: 12px;
+    color: lighten($color-gray, $amount: 15);
+    display: flex;
+    align-items: center;
+
+    .Bold{
+      font-weight: bold;
+    }
+
+    &-Arrow{
+      &:after{
+        content:"\003e";
+        margin: 0 5px;
+        font-family: monospace;
+      }
+    }
+}

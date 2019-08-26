@@ -1,0 +1,42 @@
+@import '../../assets/theme/colors.scss';
+
+.ProductDetail{
+
+  &-Image{
+    text-align: center;
+    img{
+      max-width: 70%;
+      border-radius: 5px;
+    }
+  }
+
+  &-Condition{
+    font-size: 60%;
+  }
+
+  &-Title{
+    font-size: 15px;
+    font-weight: bold;
+  }
+
+  &-Price{
+    font-size: 36px;
+    @media only screen and (max-width: 1000px) {
+      font-size: 32px;
+    }
+  }
+
+  &-Button{
+    background-color: $color-blue;
+    border-color: $color-blue;
+    font-size: 15px;
+    width: 100%;
+  }
+
+  &-Description{
+    font-size: 75%;
+    color: lighten($color: $color-gray, $amount: 10);
+    line-height: 1.3;
+    white-space: pre-wrap;
+  }
+}

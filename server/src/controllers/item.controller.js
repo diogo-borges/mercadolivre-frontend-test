@@ -20,7 +20,8 @@ class ItemController {
 
       response.send(data);
     } catch (error) {
-      console.log(error);
+      response.send(error);
+      console.log(error.message);
     }
   }
 

@@ -1,0 +1,12 @@
+@import 'assets/theme/colors.scss';
+
+body {
+  margin: 0;
+  font-family: Helvetica;
+  background-color: $color-light-gray;
+  color: $color-black;
+}
+
+:focus{
+  outline: none;
+}

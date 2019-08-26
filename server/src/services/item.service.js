@@ -15,7 +15,7 @@ class ItemService {
 
     if(response.results.length === 0) return {categories:[], items: []};
 
-    const categories = await this.getCategoriesName(response.results[0].category_id);
+    const categories = await this.getCategoriesByQuery(response.filters);
     const items = this.getFormatedItems(response.results);
  
     return {categories, items}
@@ -34,11 +34,18 @@ class ItemService {
 
     const description = await request(options)
 
-    return this.getFormatedItem(result, description)
-
+    const categories = await this.getCategoriesByItem(result.category_id);
+    const item = this.getFormatedItem(result, description)
+ 
+    return {categories, item}
   }
 
-  async getCategoriesName(categoryId){
+  getCategoriesByQuery(filters){
+    const categories = filters.find(filter=> filter.id === 'category'); 
+    return categories ? categories.values[0].path_from_root.map(category => category.name): [];
+  }
+
+  async getCategoriesByItem(categoryId){
     const options = {
       uri: `${baseUrl}/categories/${categoryId}`,
       json: true
@@ -59,7 +66,8 @@ class ItemService {
         },
         picture: item.thumbnail,
         condition: item.condition,
-        freeShipping: item.shipping.free_shipping
+        freeShipping: item.shipping.free_shipping,
+        location: item.seller_address.state.name || ""
       }
     return data
     })
@@ -67,7 +75,6 @@ class ItemService {
 
   getFormatedItem(item, itemDescription){
     return {
-      item:{
         id: item.id,
         title: item.title,
         price: {
@@ -81,7 +88,6 @@ class ItemService {
         sold_quantity: item.sold_quantity,
         description: itemDescription.plain_text || ''
       }
-    }
   }
 
 }

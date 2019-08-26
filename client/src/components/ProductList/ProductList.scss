@@ -1,0 +1,53 @@
+@import '../../assets/theme/colors.scss';
+
+.ProductList{
+  &-Row{
+    border-bottom: 1px solid $color-light-gray;
+    &.Last{
+      border-bottom: none;
+    }
+  }
+
+  &-Image{
+    border-radius: 5px;
+  }
+
+  &-Price{
+    font-size: 20px;
+  }
+
+  &-FreeShipping{
+    width: 15px;  
+  }
+
+  &-Location{
+    font-size: 10px;
+    color: $color-gray;
+  }
+
+  &-Link{
+    color: $color-black;
+
+    &:hover{
+    color: darken($color: $color-black, $amount: 10);
+    text-decoration: none;
+    }
+  }
+
+  @media only screen and (max-width: 900px) {
+    &-Price{
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    &-Location{
+    text-align: end;
+    }
+
+    &-Link{
+      font-size: 14px;
+    }
+  }
+
+ 
+}
